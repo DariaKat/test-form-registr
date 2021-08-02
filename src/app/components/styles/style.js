@@ -82,9 +82,7 @@ const Select = styled.div`
     outline: none;
     padding: 18px 21px;
   }
-  .select-box__current:nth-last-child {
-    color: ;
-  }
+ 
 
   .select-box__current:focus + .select-box__list {
     opacity: 1;
@@ -112,11 +110,15 @@ const Select = styled.div`
     display: flex;
   }
 
-  .select-box__value:nth-last-child(2) {
-    color: #a2a2a2;
+  .select-input:checked {
+    color: #A2A2A2;
   }
-  .Select {
+  .select-input {
     display: none;
+  }
+
+  .select-list {
+    display:none;
   }
   .select-box__input {
     display: none;

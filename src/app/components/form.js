@@ -17,6 +17,7 @@ import {
   Spiner,
   ButtonActive,
 } from "./styles/style";
+import { listCountry, inputCountry } from "./selectCountry";
 import { useForm } from "react-hook-form";
 
 const RegistrationForm = () => {
@@ -39,45 +40,12 @@ const RegistrationForm = () => {
     }, 10000);
   };
 
-  const options = ["Latvia", "Lebanon", "Lesotho", "Liberia", "Libya"];
-  const inputCountry = options.map((item, i) => {
-    return (
-      <div>
-      <div className="select-box__value" key={i.toString()}>
-        <input
-          className="select-box__input" 
-          type="radio"
-          id={i}
-          value={item}
-          name="country"
-          defaultChecked="checked"
-          {...register("selectCountry", {
-            required: "You must select your country",
-          })}
-        />
-        <p className="select-box__input-text">{item}</p>
-      </div>
-        
-        </div>
-    );
-  });
-  const listCountry = options.map((item, i) => {
-    return (
-      <li className={item} key={i.toString()}>
-        <label className="select-box__option" htmlFor={i} aria-hidden="true">
-          {item}
-        </label>
-      </li>
-    );
-  });
-
   const emailValid =
     /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu;
-
+ 
   const userName = watch("userName");
   const email = watch("email");
   const password = watch("password");
-  const select = watch("selectCountry");
   const gender = watch("gender", false);
   const checked = watch("checkTerms", false);
 
@@ -163,21 +131,17 @@ const RegistrationForm = () => {
       <Error>{errors.password?.message}</Error>
 
       <Select>
-        <div className="select-box__current" tabIndex="1"  >
+        <div className="select-box__current" tabIndex="1">
           {inputCountry}
-       
           <img
             className="select-box__icon"
             src="https://cdn.onlinewebfonts.com/svg/img_295694.svg"
             alt="Arrow Icon"
             aria-hidden="true"
           />
-          <Error>{errors.selectCountry?.message}</Error>
         </div>
         <ul className="select-box__list">{listCountry}</ul>
-      </Select>
-      
-
+      </Select> 
       <Container>
         <RadioInput
           type="radio"
@@ -224,7 +188,6 @@ const RegistrationForm = () => {
       userName &&
       email &&
       password &&
-      select &&
       errors.password?.message === undefined &&
       errors.email?.message === undefined &&
       errors.userName?.message === undefined ? (
