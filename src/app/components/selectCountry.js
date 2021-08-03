@@ -6,7 +6,6 @@ export const SelectCountry = (props) => {
   const { register, watch, formState: { errors } } = useFormContext();
 
   const country = watch('country', false);
-  console.log(country);
 
   const options = ["Latvia", "Lebanon", "Lesotho", "Liberia", "Libya"];
   const inputCountry = options.map((item, i) => {

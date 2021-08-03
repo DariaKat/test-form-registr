@@ -5,7 +5,7 @@ import { Input, Error,BasicContainer,Icon } from "./styles/style";
   
 export const InputPassword = () => {
     const { register, formState: { errors }} = useFormContext();
-      
+
     return (
         <div>
         <BasicContainer>
@@ -28,7 +28,7 @@ export const InputPassword = () => {
         </Icon>
         <Input
           type="password"
-          placeholder="Password"
+            placeholder="Password"
           {...register("password", {
             required: "This input is required",
             minLength: {

@@ -36,7 +36,6 @@ const RegistrationForm = () => {
         <SelectCountry />
         <ChooseGender />
         <CheckTerms />
-        {console.log(methods.watch())}
         {!methods.watch().userName ||
         !methods.watch().email  ||
         !methods.watch().password||
