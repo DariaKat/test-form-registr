@@ -110,12 +110,10 @@ const Select = styled.div`
     display: flex;
   }
 
-  .select-input:checked {
+  .select-input {
     color: #A2A2A2;
   }
-  .select-input {
-    display: none;
-  }
+
 
   .select-list {
     display:none;

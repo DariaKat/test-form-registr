@@ -1,9 +1,12 @@
 import React from "react";
 import { useFormContext } from "react-hook-form";
-import { Select } from "./styles/style";
+import { Select, Error } from "./styles/style";
 
 export const SelectCountry = (props) => {
-  const { register } = useFormContext();
+  const { register, watch, formState: { errors } } = useFormContext();
+
+  const country = watch('country', false);
+  console.log(country);
 
   const options = ["Latvia", "Lebanon", "Lesotho", "Liberia", "Libya"];
   const inputCountry = options.map((item, i) => {
@@ -15,8 +18,10 @@ export const SelectCountry = (props) => {
           id={i}
           value={item}
           name="country"
-          defaultChecked
-          {...register("country")}
+          // defaultChecked
+          {...register("country", {
+            required: "You must select your country",
+          })}
         />
         <p className="select-box__input-text">{item}</p>
       </div>
@@ -37,6 +42,7 @@ export const SelectCountry = (props) => {
     <div>
       <Select>
         <div className="select-box__current" tabIndex="1">
+          { (!country) ? <p className="select-input"> Select country </p>: <p></p>}
           {inputCountry}
           <img
             className="select-box__icon"
@@ -47,6 +53,7 @@ export const SelectCountry = (props) => {
         </div>
         <ul className="select-box__list">{listCountry}</ul>
       </Select>
+      <Error>{errors.country?.message}</Error>
     </div>
   );
 };
