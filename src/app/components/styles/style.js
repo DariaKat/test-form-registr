@@ -111,7 +111,7 @@ const Select = styled.div`
   }
 
   .select-input {
-    color: #A2A2A2;
+    color:#717374;
   }
 
 
